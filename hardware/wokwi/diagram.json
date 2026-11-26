@@ -1,0 +1,290 @@
+{
+  "version": 1,
+  "author": "Haven Smart Home",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -200,
+      "left": 20,
+      "attrs": {
+        "pins": "full"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": -120,
+      "left": -200,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay1",
+      "top": 240,
+      "left": 150,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rLoad",
+      "top": 330,
+      "left": 320,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledComp",
+      "top": 270,
+      "left": 420,
+      "attrs": {
+        "color": "yellow",
+        "label": "AC compressor"
+      }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": -20,
+      "left": 330,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rBlue",
+      "top": 260,
+      "left": -120,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledBlue",
+      "top": 200,
+      "left": -120,
+      "attrs": {
+        "color": "blue",
+        "label": "Cooling"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rGreen",
+      "top": 340,
+      "left": -120,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledGreen",
+      "top": 300,
+      "left": -200,
+      "attrs": {
+        "color": "green",
+        "label": "At target"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "pot1:VCC",
+      "uno:5V",
+      "red",
+      []
+    ],
+    [
+      "pot1:GND",
+      "uno:GND.1",
+      "black",
+      []
+    ],
+    [
+      "pot1:SIG",
+      "uno:A0",
+      "orange",
+      []
+    ],
+    [
+      "lcd1:VSS",
+      "uno:GND.2",
+      "black",
+      []
+    ],
+    [
+      "lcd1:VDD",
+      "uno:5V",
+      "red",
+      []
+    ],
+    [
+      "lcd1:V0",
+      "uno:GND.2",
+      "black",
+      []
+    ],
+    [
+      "lcd1:RW",
+      "uno:GND.2",
+      "black",
+      []
+    ],
+    [
+      "lcd1:K",
+      "uno:GND.2",
+      "black",
+      []
+    ],
+    [
+      "lcd1:A",
+      "uno:5V",
+      "red",
+      []
+    ],
+    [
+      "lcd1:RS",
+      "uno:12",
+      "blue",
+      []
+    ],
+    [
+      "lcd1:E",
+      "uno:11",
+      "blue",
+      []
+    ],
+    [
+      "lcd1:D4",
+      "uno:5",
+      "green",
+      []
+    ],
+    [
+      "lcd1:D5",
+      "uno:4",
+      "green",
+      []
+    ],
+    [
+      "lcd1:D6",
+      "uno:3",
+      "green",
+      []
+    ],
+    [
+      "lcd1:D7",
+      "uno:2",
+      "green",
+      []
+    ],
+    [
+      "servo1:V+",
+      "uno:5V",
+      "red",
+      []
+    ],
+    [
+      "servo1:GND",
+      "uno:GND.3",
+      "black",
+      []
+    ],
+    [
+      "servo1:PWM",
+      "uno:9",
+      "purple",
+      []
+    ],
+    [
+      "relay1:VCC",
+      "uno:5V",
+      "red",
+      []
+    ],
+    [
+      "relay1:GND",
+      "uno:GND.1",
+      "black",
+      []
+    ],
+    [
+      "relay1:IN",
+      "uno:7",
+      "orange",
+      []
+    ],
+    [
+      "relay1:COM",
+      "uno:5V",
+      "red",
+      []
+    ],
+    [
+      "relay1:NO",
+      "rLoad:1",
+      "yellow",
+      []
+    ],
+    [
+      "rLoad:2",
+      "ledComp:A",
+      "yellow",
+      []
+    ],
+    [
+      "ledComp:C",
+      "uno:GND.1",
+      "black",
+      []
+    ],
+    [
+      "uno:10",
+      "rBlue:1",
+      "blue",
+      []
+    ],
+    [
+      "rBlue:2",
+      "ledBlue:A",
+      "blue",
+      []
+    ],
+    [
+      "ledBlue:C",
+      "uno:GND.1",
+      "black",
+      []
+    ],
+    [
+      "uno:13",
+      "rGreen:1",
+      "green",
+      []
+    ],
+    [
+      "rGreen:2",
+      "ledGreen:A",
+      "green",
+      []
+    ],
+    [
+      "ledGreen:C",
+      "uno:GND.1",
+      "black",
+      []
+    ]
+  ],
+  "dependencies": {}
+}

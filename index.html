@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f1">
+  <title>Haven — Smart Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#" aria-label="Haven home">
+      <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 15.2 16 5l12 10.2v12H19v-8h-6v8H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M11 13h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      <span><strong>haven</strong><small>HOME INTELLIGENCE</small></span>
+    </a>
+    <div class="nav-label">YOUR HOME</div>
+    <nav class="nav-list" aria-label="Main navigation">
+      <button class="nav-item active" data-page="overview"><span class="nav-icon">◫</span>Overview</button>
+      <button class="nav-item" data-page="devices"><span class="nav-icon">⌘</span>Devices <span class="nav-count" id="deviceCount">6</span></button>
+      <button class="nav-item" data-page="automation"><span class="nav-icon">✳</span>Automations</button>
+      <button class="nav-item" data-page="sensors"><span class="nav-icon">⌁</span>Sensor room</button>
+      <button class="nav-item" data-page="activity"><span class="nav-icon">◷</span>Activity & alerts <span class="nav-dot"></span></button>
+    </nav>
+    <div class="nav-label nav-label-spaced">PREFERENCES</div>
+    <nav class="nav-list">
+      <button class="nav-item" data-page="insights"><span class="nav-icon">↗</span>Research insights</button>
+      <button class="nav-item" data-page="settings"><span class="nav-icon">⚙</span>Settings</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="connection-card">
+        <div class="connection-top"><span class="status-pulse"></span><span>Demo environment</span></div>
+        <p>Explore the interface with sample sensor readings and locally saved controls.</p>
+        <span class="demo-pill">SIMULATION MODE</span>
+      </div>
+      <div class="profile-row"><div class="avatar">H</div><div><strong>Home owner</strong><small>Personal space</small></div><button class="more-button" aria-label="Profile options">···</button></div>
+    </div>
+  </aside>
+
+  <main class="main-area">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+      <div class="breadcrumb"><span>My home</span><span class="crumb-slash">/</span><strong id="pageCrumb">Overview</strong></div>
+      <div class="topbar-actions">
+        <div class="date-chip"><span class="tiny-sun">☼</span><span id="todayLabel">Tuesday, 27 October</span></div>
+        <button class="icon-button" id="openNotifications" aria-label="View alerts">♧<i class="notification-indicator"></i></button>
+        <div class="top-avatar">H</div>
+      </div>
+    </header>
+
+    <section class="page active-page" id="page-overview">
+      <div class="welcome-row">
+        <div><div class="eyebrow">TUESDAY AT HOME <span class="eyebrow-line"></span></div><h1>A little more <em>in sync.</em></h1><p class="page-subtitle">Your home, thoughtfully connected. Here's what's happening today.</p></div>
+        <button class="primary-button" id="quickScene"><span>✦</span> Set evening scene</button>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-copy"><span class="hero-tag"><span class="status-pulse"></span> HOME AT A GLANCE</span><h2>Comfort, without<br>the extra effort.</h2><p>Keep an eye on your space, adjust a device, or let a simple routine do the work.</p><button class="hero-link" data-goto="devices">Explore your devices <span>↗</span></button></div>
+        <div class="hero-art" aria-hidden="true"><div class="art-sun"></div><div class="art-hill hill-back"></div><div class="art-hill hill-front"></div><div class="art-house"><div class="roof"></div><div class="house-body"><div class="house-window"></div><div class="house-door"></div></div></div><div class="art-plant plant-one"><i></i><i></i><i></i></div><div class="art-plant plant-two"><i></i><i></i></div></div>
+        <div class="hero-footer"><span><b>6</b> connected devices</span><span class="hero-divider"></span><span><b id="activeAutomationCount">3</b> active routines</span><span class="hero-spacer"></span><span class="privacy-note">⌑ Your data stays in this browser</span></div>
+      </div>
+
+      <div class="section-heading"><div><h2>Your home, at a glance</h2><p>Helpful signals from around your space.</p></div><button class="text-button" data-goto="sensors">View sensor room <span>→</span></button></div>
+      <div class="metrics-grid">
+        <article class="metric-card"><div class="metric-top"><span class="metric-icon sage">☼</span><span class="metric-label">Indoor temperature</span><span class="metric-menu">···</span></div><div class="metric-value"><span id="tempValue">24.2</span><small>°C</small></div><div class="metric-foot"><span class="trend calm">↘ Comfortable</span><span>Living room</span></div><div class="sparkline"><svg viewBox="0 0 180 32" preserveAspectRatio="none"><path d="M0 21 C18 19 20 7 38 12 S60 25 76 18 S98 7 115 14 S140 24 154 14 S170 13 180 8" /></svg></div></article>
+        <article class="metric-card"><div class="metric-top"><span class="metric-icon amber">◉</span><span class="metric-label">Air quality</span><span class="metric-menu">···</span></div><div class="metric-value"><span id="airValue">Good</span></div><div class="metric-foot"><span class="trend calm">● Within range</span><span>Indoor estimate</span></div><div class="quality-track"><span></span><span></span><span></span><span></span><span></span></div></article>
+        <article class="metric-card"><div class="metric-top"><span class="metric-icon blue">⌁</span><span class="metric-label">Motion today</span><span class="metric-menu">···</span></div><div class="metric-value"><span id="motionValue">18</span><small>events</small></div><div class="metric-foot"><span class="trend calm">↗ Normal activity</span><span>Motion sensor</span></div><div class="mini-bars"><i style="height:35%"></i><i style="height:52%"></i><i style="height:43%"></i><i style="height:68%"></i><i style="height:48%"></i><i style="height:82%"></i><i style="height:61%"></i><i style="height:95%"></i><i style="height:72%"></i><i style="height:57%"></i><i style="height:74%"></i><i style="height:48%"></i></div></article>
+        <article class="metric-card"><div class="metric-top"><span class="metric-icon rose">ϟ</span><span class="metric-label">Energy status</span><span class="metric-menu">···</span></div><div class="metric-value"><span id="energyValue">3.8</span><small>kWh*</small></div><div class="metric-foot"><span class="trend calm">Estimated usage</span><span>Today</span></div><div class="energy-progress"><span></span></div><div class="metric-note">*Illustrative demo value</div></article>
+      </div>
+
+      <div class="content-columns">
+        <section class="content-card devices-card"><div class="card-heading"><div><h3>Devices you use most</h3><p>Quick control, right where you need it.</p></div><button class="circle-arrow" data-goto="devices" aria-label="All devices">↗</button></div><div class="device-list" id="overviewDeviceList"></div></section>
+        <section class="content-card routine-card"><div class="card-heading"><div><h3>Your routines</h3><p>Small habits that make home feel easy.</p></div><button class="circle-arrow" data-goto="automation" aria-label="All routines">↗</button></div><div id="overviewRoutineList"></div><button class="add-routine-button" data-goto="automation"><span>＋</span> Create a routine</button></section>
+      </div>
+      <div class="bottom-note"><span class="note-icon">i</span><div><strong>About these readings</strong><p>This preview uses sample data to demonstrate the experience. It is not connected to physical sensors and should not be used for safety monitoring.</p></div><button id="dismissNote" aria-label="Dismiss note">×</button></div>
+    </section>
+
+    <section class="page" id="page-devices">
+      <div class="page-title-row"><div><div class="eyebrow">CONTROL CENTRE</div><h1>Your devices</h1><p class="page-subtitle">A simple way to manage the things that make your home yours.</p></div><button class="primary-button" id="addDeviceButton">＋ Add device</button></div>
+      <div class="toolbar"><div class="search-box"><span>⌕</span><input id="deviceSearch" type="search" placeholder="Search devices..." aria-label="Search devices"></div><div class="filter-tabs" id="deviceFilters"><button class="filter-tab selected" data-filter="All">All devices <b id="allDeviceNum">6</b></button><button class="filter-tab" data-filter="On">On</button><button class="filter-tab" data-filter="Off">Off</button></div></div>
+      <div class="devices-grid" id="allDevicesGrid"></div>
+      <div class="integration-callout"><div class="integration-icon">⌘</div><div><strong>Built for real devices, ready for your next step.</strong><p>Connect an ESP8266/ESP32 controller and a secure MQTT or Home Assistant backend to turn this interface into a live system.</p></div><button class="secondary-button" data-goto="insights">View architecture</button></div>
+    </section>
+
+    <section class="page" id="page-automation">
+      <div class="page-title-row"><div><div class="eyebrow">MAKE IT YOURS</div><h1>Thoughtful routines</h1><p class="page-subtitle">Set up simple rules that help your home respond to everyday life.</p></div><button class="primary-button" id="newRoutineButton">＋ New routine</button></div>
+      <div class="automation-banner"><div><span class="hero-tag">AUTOMATION STUDIO</span><h2>Less tapping.<br><em>More living.</em></h2><p>Start with a suggested routine or create your own. These rules are saved in this browser preview.</p></div><div class="routine-orbit"><span class="orbit-core">✳</span><i class="orbit-dot dot-a"></i><i class="orbit-dot dot-b"></i><i class="orbit-dot dot-c"></i></div></div>
+      <div class="section-heading"><div><h2>All routines</h2><p>Switch a routine on or off at any time.</p></div><span class="subtle-count" id="routineCountLabel">3 routines</span></div>
+      <div class="routine-grid" id="allRoutinesGrid"></div>
+      <div class="content-card recipe-card"><div class="recipe-icon">✦</div><div><h3>Need a starting point?</h3><p>Try a gentle evening routine: dim the living room lights and switch off non-essential devices at your preferred time.</p></div><button class="secondary-button" id="suggestRoutineButton">Use suggestion</button></div>
+    </section>
+
+    <section class="page" id="page-sensors">
+      <div class="page-title-row"><div><div class="eyebrow">AWARENESS, NOT NOISE</div><h1>Sensor room</h1><p class="page-subtitle">Search any city or area to update outdoor weather and compare three smart-home setups.</p></div><span class="demo-pill large-pill">SAMPLE DATA</span></div>
+      <div class="sensor-warning"><span>ⓘ</span><div><strong>Preview readings only</strong><p>These values are illustrative and generated in your browser. No hardware is connected, and gas readings or alerts here cannot detect real hazards.</p></div></div>
+      <section class="content-card location-card"><div class="card-heading"><div><h3>Location & outdoor weather</h3><p id="locationSubtitle">Bengaluru, Karnataka · Live weather and map</p></div><span class="source-chip" id="weatherSource">WEATHER LOADING</span></div>
+      <form class="location-search-form" id="locationSearchForm"><label for="locationSearch">Search a city, town or area</label><div class="location-search-row"><input id="locationSearch" type="search" value="Bengaluru, Karnataka" placeholder="Type a place name, e.g. Mysuru" autocomplete="off" required aria-autocomplete="list" aria-controls="locationSuggestions"><button class="primary-button" type="submit" id="locationSearchButton">Search location</button></div><div class="location-suggestions" id="locationSuggestions" role="listbox" hidden></div><small id="locationSearchStatus" aria-live="polite">Weather is fetched for the searched location using its geocoded coordinates.</small></form>
+      <div class="location-grid"><div><div class="google-map-frame"><iframe id="havenMapFrame" title="Map of searched location" src="https://maps.google.com/maps?q=Bengaluru%2C%20Karnataka&t=&z=11&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div><p class="map-caption">Map follows the searched public location. It is a location reference, not a private home address.</p><a class="secondary-button map-open-link" id="mapOpenLink" href="https://www.google.com/maps/search/?api=1&query=Bengaluru%2C%20Karnataka" target="_blank" rel="noopener">↗ Open searched location in Google Maps</a></div><div class="outdoor-panel"><span class="weather-kicker" id="weatherLocationLabel">BENGALURU OUTDOORS</span><div class="outdoor-temp"><strong id="outdoorTemp">--</strong><small>°C</small></div><p id="outdoorCondition">Fetching current weather…</p><div class="weather-detail"><span>Humidity</span><strong id="outdoorHumidity">--%</strong></div><div class="weather-detail"><span>Wind</span><strong id="outdoorWind">-- km/h</strong></div><div class="weather-range"><span>Today low <strong id="outdoorLow">--°</strong></span><span>Today high <strong id="outdoorHigh">--°</strong></span></div><small class="weather-updated" id="weatherUpdated">Live data via Open-Meteo</small><button class="secondary-button weather-refresh" id="refreshWeather" type="button">↻ Refresh weather</button></div></div><div class="map-fallback-note" id="mapFallbackNote" hidden>Map tiles could not load. Use the house blueprint below to view the sensor positions.</div></section>
+      <section class="content-card climate-card" id="climateCard">
+        <div class="card-heading"><div><h3>Room climate control · AC automation</h3><p>Comfort band 15–19°C. Press the button and Haven chooses a target from the outdoor temperature, then drives the hardware (virtual circuit or a real Arduino).</p></div><span class="source-chip" id="hwModeChip">VIRTUAL HARDWARE</span></div>
+        <div class="climate-summary">
+          <div class="feel-tile" id="feelOut"><span class="feel-kicker" id="feelOutPlace">OUTSIDE · BENGALURU</span><strong class="feel-temp" id="feelOutTemp">--°C</strong><span class="feel-badge" id="feelOutBadge">--</span><p id="feelOutText">Loading live weather…</p></div>
+          <div class="feel-arrow">→</div>
+          <div class="feel-tile" id="feelIn"><span class="feel-kicker" id="feelInPlace">INSIDE · LIVING ROOM</span><strong class="feel-temp" id="feelInTemp">--°C</strong><span class="feel-badge" id="feelInBadge">--</span><p id="feelInText">Reading room sensor…</p></div>
+          <div class="feel-arrow">→</div>
+          <div class="feel-tile goal"><span class="feel-kicker">COMFORTABLE TARGET</span><strong class="feel-temp" id="feelGoalTemp">15–19°C</strong><span class="feel-badge comfy">Comfortable</span><p id="feelGoalText">Haven picks the best value for today’s weather.</p></div>
+        </div>
+        <div class="climate-toolbar"><button class="secondary-button" id="useMyLocation" type="button">📍 Use my current location</button><label for="climatePref">Preferred comfort temperature</label><select id="climatePref" class="select-input"><option value="auto">Auto (recommended)</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option></select></div>
+        <div class="climate-grid">
+          <div class="climate-controls">
+            <label for="climateRoom">Room to cool</label>
+            <select id="climateRoom" class="select-input"><option>Living room</option><option>Bedroom</option><option>Kitchen</option><option>Bathroom</option></select>
+            <label for="climateOutdoor">Outdoor temperature (°C)</label>
+            <input id="climateOutdoor" class="text-input" type="number" step="0.5" placeholder="Live weather">
+            <small class="climate-hint">Leave empty to use the live weather above. Type <b>25</b> to simulate a 25°C day.</small>
+            <button class="primary-button" id="adjustRoomTemp" type="button">❄ Adjust room temperature</button>
+            <button class="secondary-button" id="stopClimate" type="button">Turn AC off</button>
+            <div class="climate-readout"><div><span>Room now</span><strong id="climateNow">--</strong></div><div><span>Target</span><strong id="climateTarget">--</strong></div><div><span>AC</span><strong id="climateAC">OFF</strong></div></div>
+            <p class="climate-status" id="climateStatus" aria-live="polite">Idle. Press “Adjust room temperature” to start.</p>
+          </div>
+          <div class="climate-hw">
+            <svg class="hw-svg" viewBox="0 0 640 300" role="img" aria-label="Virtual hardware: sensor, controller, relay, AC unit, LCD and LEDs">
+              <g class="hw-wire"><path d="M140 145H230"/><path d="M410 130H470"/><path d="M520 160V190"/><path d="M320 100V66"/><path d="M300 210V232"/><path d="M350 210V232"/><path d="M410 175H592V215"/></g>
+              <rect class="hw-lcd" x="200" y="8" width="240" height="58" rx="6"/>
+              <text class="hw-lcd-text" id="hwLcd1" x="214" y="31" xml:space="preserve">T:--.-C SET:--C</text>
+              <text class="hw-lcd-text" id="hwLcd2" x="214" y="53" xml:space="preserve">AC:OFF  IDLE</text>
+              <rect class="hw-box" x="20" y="110" width="120" height="70" rx="8"/>
+              <text class="hw-title" x="80" y="132">TMP36 / DHT22</text><text class="hw-sub" x="80" y="148">Room sensor</text>
+              <text class="hw-value" id="hwSensor" x="80" y="170">--</text>
+              <rect class="hw-board" x="230" y="100" width="180" height="110" rx="8"/>
+              <text class="hw-title light" x="320" y="140">ARDUINO UNO</text><text class="hw-sub light" x="320" y="158">or ESP32 controller</text><text class="hw-sub light" x="320" y="184">hysteresis ±0.5°C</text>
+              <circle class="hw-led" id="hwLedCool" cx="300" cy="245" r="9"/><text class="hw-sub" x="300" y="274">COOLING</text>
+              <circle class="hw-led ok" id="hwLedOk" cx="350" cy="245" r="9"/><text class="hw-sub" x="350" y="274">AT TARGET</text>
+              <rect class="hw-box" x="470" y="100" width="100" height="60" rx="8"/>
+              <text class="hw-title" x="520" y="122">RELAY</text>
+              <text class="hw-value small" id="hwRelay" x="520" y="148">OFF</text>
+              <rect class="hw-box" x="450" y="190" width="170" height="92" rx="10"/>
+              <text class="hw-sub" x="535" y="204">AC unit (motor + louver)</text>
+              <g class="hw-fan" id="hwFan"><circle cx="490" cy="244" r="26" class="hw-fan-ring"/><path d="M490 244 L490 220 M490 244 L511 256 M490 244 L469 256" class="hw-fan-blade"/></g>
+              <line id="hwVane" class="hw-vane" x1="592" y1="244" x2="618" y2="244"/>
+            </svg>
+            <p class="chart-footnote">Virtual circuit mirrors the Tinkercad build in <code>hardware/</code>: same pins, same control rule, same serial messages.</p>
+          </div>
+        </div>
+        <div class="hw-bridge">
+          <div class="hw-bridge-head"><strong>Hardware bridge · serial messages</strong><div><button class="secondary-button" id="hwCopy" type="button">Copy Tinkercad command</button><button class="secondary-button" id="hwConnect" type="button">Connect real Arduino (USB)</button></div></div>
+          <div class="hw-cmd">Last command: <code id="hwCmd">press Adjust to generate</code></div>
+          <div class="hw-log" id="hwLog" aria-live="polite"></div>
+        </div>
+      </section>
+      <section class="content-card blueprint-card"><div class="card-heading"><div><h3>Indoor sensor layout</h3><p>Illustrative house blueprint · Hover over a room to highlight its sensor; tap to inspect its reading.</p></div><span class="source-chip">SIMULATED ROOM SENSORS</span></div><div class="blueprint-wrap"><svg class="house-blueprint" viewBox="0 0 760 390" role="img" aria-label="Schematic floor plan with kitchen, living room, bedroom and bathroom sensors"><rect x="12" y="12" width="736" height="366" rx="10" class="bp-outline"/><path d="M390 12V378 M12 205H748 M390 205H748 M570 205V378" class="bp-wall"/><rect class="bp-room-hit" data-room="Kitchen" x="16" y="16" width="370" height="185" rx="5"/><rect class="bp-room-hit" data-room="Living room" x="16" y="209" width="370" height="165" rx="5"/><rect class="bp-room-hit" data-room="Bedroom" x="394" y="16" width="350" height="185" rx="5"/><rect class="bp-room-hit" data-room="Bathroom" x="574" y="209" width="170" height="165" rx="5"/><text x="195" y="100" class="bp-room">KITCHEN</text><text x="195" y="125" class="bp-sub">Cooking area</text><text x="195" y="282" class="bp-room">LIVING ROOM</text><text x="195" y="307" class="bp-sub">Main common area</text><text x="570" y="100" class="bp-room">BEDROOM</text><text x="570" y="125" class="bp-sub">Sleeping area</text><text x="660" y="282" class="bp-room">BATH</text><text x="660" y="307" class="bp-sub">Washroom</text><g class="bp-sensor" data-room="Kitchen" tabindex="0" role="button" aria-label="Kitchen temperature sensor"><circle cx="85" cy="90" r="25"/><text x="85" y="95">K</text></g><g class="bp-sensor" data-room="Living room" tabindex="0" role="button" aria-label="Living room temperature sensor"><circle cx="85" cy="280" r="25"/><text x="85" y="285">L</text></g><g class="bp-sensor" data-room="Bedroom" tabindex="0" role="button" aria-label="Bedroom temperature sensor"><circle cx="475" cy="90" r="25"/><text x="475" y="95">B</text></g><g class="bp-sensor" data-room="Bathroom" tabindex="0" role="button" aria-label="Bathroom temperature sensor"><circle cx="630" cy="280" r="25"/><text x="630" y="285">W</text></g></svg><div class="room-readings" id="roomReadings"><button type="button" data-room="Kitchen"><span>Kitchen</span><strong id="roomKitchen">29.0°C</strong></button><button type="button" data-room="Living room"><span>Living room</span><strong id="roomLiving">24.0°C</strong></button><button type="button" data-room="Bedroom"><span>Bedroom</span><strong id="roomBedroom">22.5°C</strong></button><button type="button" data-room="Bathroom"><span>Bathroom</span><strong id="roomBathroom">23.5°C</strong></button></div><p class="chart-footnote" id="selectedRoomInfo" aria-live="polite">Kitchen sensor · illustrative indoor reading, not a physical sensor measurement.</p></div></section>
+      <section class="house-comparison-section"><div class="section-heading"><div><h2>Three homes · same searched location</h2><p>Compare how the same local outdoor weather affects homes with different levels of automation.</p></div><span class="source-chip">MODELLED ROOM ESTIMATES</span></div><div class="house-comparison-grid" id="houseComparisonGrid" aria-live="polite"><div class="house-comparison-card"><p>Loading location-based house estimates…</p></div></div><p class="house-model-note">These are illustrative indoor estimates, not physical sensor readings. Outdoor weather is live; indoor values are modelled from that location's temperature range and each home's insulation / automation profile.</p></section>
+      <div class="sensor-grid">
+        <article class="sensor-card"><div class="sensor-card-head"><span class="metric-icon sage">☼</span><span class="sensor-status">IN RANGE</span></div><p>Temperature</p><div class="sensor-number"><span id="sensorTemp">24.2</span><small>°C</small></div><div class="sensor-scale"><span>16°</span><div><i style="left:53%"></i></div><span>32°</span></div><p class="sensor-caption">Living room · simulated room sensor</p></article>
+        <article class="sensor-card"><div class="sensor-card-head"><span class="metric-icon blue">◌</span><span class="sensor-status">IN RANGE</span></div><p>Humidity</p><div class="sensor-number"><span id="humidityValue">48</span><small>%</small></div><div class="sensor-scale"><span>20%</span><div><i style="left:47%"></i></div><span>80%</span></div><p class="sensor-caption">Illustrative relative humidity</p></article>
+        <article class="sensor-card"><div class="sensor-card-head"><span class="metric-icon amber">◉</span><span class="sensor-status">NO EVENT</span></div><p>Motion activity</p><div class="sensor-number"><span id="sensorMotion">18</span><small>events</small></div><div class="sensor-mini-chart"><i style="height:28%"></i><i style="height:45%"></i><i style="height:33%"></i><i style="height:62%"></i><i style="height:50%"></i><i style="height:82%"></i><i style="height:56%"></i><i style="height:74%"></i><i style="height:43%"></i><i style="height:92%"></i><i style="height:61%"></i><i style="height:48%"></i></div><p class="sensor-caption">Sample motion detections today</p></article>
+        <article class="sensor-card"><div class="sensor-card-head"><span class="metric-icon rose">⌁</span><span class="sensor-status neutral-status">NOT CONNECTED</span></div><p>Gas sensor (MQ series)</p><div class="sensor-number"><span>—</span></div><div class="sensor-empty">Connect hardware to show readings</div><p class="sensor-caption">No gas detection is active in this preview</p></article>
+      </div>
+      <div class="content-card sensor-chart-card"><div class="card-heading"><div><h3>Indoor comfort trend</h3><p>Sample temperature pattern across the day</p></div><span class="chart-legend"><i></i> Temperature</span></div><div class="chart-wrap"><div class="chart-y-labels"><span>28°</span><span>26°</span><span>24°</span><span>22°</span></div><svg class="comfort-chart" viewBox="0 0 800 190" preserveAspectRatio="none" aria-label="Illustrative temperature trend"><defs><linearGradient id="areaFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#8ba995" stop-opacity=".23"/><stop offset="100%" stop-color="#8ba995" stop-opacity="0"/></linearGradient></defs><path class="chart-grid-line" d="M0 20H800 M0 65H800 M0 110H800 M0 155H800"/><path class="chart-area" d="M0 130 C40 120 55 103 95 111 S155 88 200 97 S260 122 310 98 S370 68 420 84 S475 104 520 79 S580 54 625 69 S690 93 730 62 S775 58 800 46 L800 170 L0 170Z"/><path class="chart-line" d="M0 130 C40 120 55 103 95 111 S155 88 200 97 S260 122 310 98 S370 68 420 84 S475 104 520 79 S580 54 625 69 S690 93 730 62 S775 58 800 46"/></svg></div><div class="chart-x-labels"><span>6 AM</span><span>8 AM</span><span>10 AM</span><span>12 PM</span><span>2 PM</span><span>4 PM</span><span>6 PM</span><span>Now</span></div><p class="chart-footnote">Illustrative values for interface preview only — not measured sensor history.</p></div>
+    </section>
+
+    <section class="page" id="page-activity">
+      <div class="page-title-row"><div><div class="eyebrow">THE LITTLE THINGS</div><h1>Activity & alerts</h1><p class="page-subtitle">A clear timeline of device actions and system messages.</p></div><button class="secondary-button" id="clearActivityButton">Clear activity</button></div>
+      <div class="activity-summary"><div><span class="activity-summary-icon">◷</span><div><strong id="activityTotal">8</strong><small>Recent events</small></div></div><div><span class="activity-summary-icon alert-summary-icon">♡</span><div><strong>0</strong><small>Unresolved safety alerts</small></div></div><div><span class="activity-summary-icon">⌑</span><div><strong>Local</strong><small>Browser-only history</small></div></div></div>
+      <div class="content-card activity-card"><div class="card-heading"><div><h3>Recent timeline</h3><p>New actions appear here as you use the preview.</p></div><span class="subtle-count">LATEST FIRST</span></div><div class="activity-list" id="activityList"></div></div>
+      <div class="sensor-warning"><span>!</span><div><strong>Safety reminder</strong><p>This prototype does not send real notifications or detect smoke, gas, intrusion, or other hazards. Use certified hardware and independent alarms for safety-critical monitoring.</p></div></div>
+    </section>
+
+    <section class="page" id="page-insights">
+      <div class="page-title-row"><div><div class="eyebrow">FROM THE LITERATURE REVIEW</div><h1>Design with intention</h1><p class="page-subtitle">The thinking behind Haven, translated into practical product decisions.</p></div><span class="source-chip">10 PAPERS REVIEWED</span></div>
+      <div class="insight-hero"><div><span class="hero-tag">PROJECT DIRECTION</span><h2>A home that feels<br><em>simple, secure, and useful.</em></h2><p>Your review points toward one joined-up interface: appliance control, sensor-driven automation, alerts, and meaningful evaluation — without losing sight of privacy and reliability.</p></div><div class="insight-symbol">⌂<span>+</span></div></div>
+      <div class="section-heading"><div><h2>What the review tells us</h2><p>Research findings and gaps from the uploaded literature review.</p></div></div>
+      <div class="insight-grid">
+        <article class="insight-card"><span class="insight-number">01</span><div class="insight-icon sage">⌘</div><h3>One clear control surface</h3><p>The reviewed systems combine remote appliance control with sensor readings and dashboards. Haven brings those tasks into one consistent place.</p><span class="insight-tag">USABILITY</span></article>
+        <article class="insight-card"><span class="insight-number">02</span><div class="insight-icon blue">⌁</div><h3>Local-first where possible</h3><p>The review highlights local operation as a way to reduce cloud dependence, alongside the need to consider secure remote access.</p><span class="insight-tag">PRIVACY</span></article>
+        <article class="insight-card"><span class="insight-number">03</span><div class="insight-icon amber">✳</div><h3>Automation with override</h3><p>Your objectives call for rule-based sensor automation while keeping manual control and scheduling available to the user.</p><span class="insight-tag">CONTROL</span></article>
+        <article class="insight-card"><span class="insight-number">04</span><div class="insight-icon rose">↗</div><h3>Measure the real system</h3><p>The proposed evaluation includes response time, switching reliability, sensor accuracy, and alert delivery on working hardware.</p><span class="insight-tag">VALIDATION</span></article>
+      </div>
+      <div class="content-card gap-card"><div class="gap-heading"><div class="gap-icon">◎</div><div><h3>Gaps worth addressing</h3><p>Recurring concerns identified across the reviewed papers.</p></div></div><div class="gap-list"><div><span>01</span><p><strong>Security & privacy</strong><small>Authentication, encrypted communication, and safe access controls.</small></p><span class="gap-priority">HIGH PRIORITY</span></div><div><span>02</span><p><strong>Reliability beyond the lab</strong><small>Test the prototype in realistic conditions and document limitations.</small></p><span class="gap-priority">VALIDATION</span></div><div><span>03</span><p><strong>Quantitative evaluation</strong><small>Report measured response times, switching success, sensor accuracy, and alert delivery.</small></p><span class="gap-priority">MEASUREMENT</span></div><div><span>04</span><p><strong>Local operation & scale</strong><small>Explore how memory, connectivity, and device count affect performance.</small></p><span class="gap-priority">ENGINEERING</span></div></div></div>
+      <div class="architecture-card"><div><span class="eyebrow">PROPOSED SYSTEM FLOW</span><h3>From sensor to response</h3><p>Based on the methodology outlined in your review.</p></div><div class="flow-row"><div class="flow-node"><span>⌁</span><strong>Sensors</strong><small>PIR · LDR · DHT · MQ</small></div><span class="flow-arrow">→</span><div class="flow-node"><span>⌘</span><strong>ESP8266 / ESP32</strong><small>Readings & rules</small></div><span class="flow-arrow">→</span><div class="flow-node"><span>⇄</span><strong>MQTT / local hub</strong><small>Secure messaging</small></div><span class="flow-arrow">→</span><div class="flow-node"><span>▦</span><strong>Haven interface</strong><small>Control & alerts</small></div></div><p class="architecture-footnote">Conceptual architecture only. This preview is not connected to a controller, MQTT broker, Home Assistant, or physical sensors.</p></div>
+      <div class="references-box"><h3>Source note</h3><p>Content above is based on the uploaded four-page literature review, <em>IoT-Based Smart Home Automation System</em>, including its ten-paper comparison, objectives, methodologies, expected results, and research gaps. Paper-specific figures remain in the source document; the dashboard does not present them as live system measurements.</p></div>
+    </section>
+
+    <section class="page" id="page-settings">
+      <div class="page-title-row"><div><div class="eyebrow">YOUR SPACE, YOUR RULES</div><h1>Settings</h1><p class="page-subtitle">A few simple choices to make the preview feel like your home.</p></div></div>
+      <div class="settings-layout"><div class="content-card settings-menu"><button class="settings-tab active">General preferences</button><button class="settings-tab" id="settingsDataTab">Data & privacy</button><button class="settings-tab" id="settingsAboutTab">About this preview</button></div><div class="content-card settings-content" id="settingsContent"><div class="settings-section"><span class="settings-kicker">DISPLAY</span><h3>Make yourself at home</h3><p>Choose a few defaults for this browser preview.</p><label class="setting-row"><span><strong>Home name</strong><small>Shown in your workspace</small></span><input class="text-input" id="homeNameInput" value="My home" maxlength="28"></label><label class="setting-row"><span><strong>Temperature unit</strong><small>Used for sample temperature readings</small></span><select class="select-input" id="unitSelect"><option value="C">Celsius (°C)</option><option value="F">Fahrenheit (°F)</option></select></label><div class="setting-row"><span><strong>Comfort notifications</strong><small>Show gentle interface reminders</small></span><label class="switch"><input type="checkbox" id="comfortNotifications" checked><span class="slider"></span></label></div><div class="settings-actions"><button class="primary-button" id="saveSettingsButton">Save preferences</button><span id="settingsSaved" class="saved-label"></span></div></div></div></div>
+      <div class="content-card reset-card"><div><h3>Start fresh</h3><p>Reset device toggles, routines, activity, and preferences to the original demo state.</p></div><button class="danger-button" id="resetDemoButton">Reset preview data</button></div>
+    </section>
+    <footer class="app-footer"><span>HAVEN <span class="footer-dot">·</span> SMART HOME PREVIEW</span><span>Designed for clarity, built for exploration.</span></footer>
+  </main>
+</div>
+<div class="toast-region" id="toastRegion" aria-live="polite"></div>
+<div class="modal-backdrop" id="modalBackdrop" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close dialog">×</button><div class="modal-symbol">✳</div><h2 id="modalTitle">Create a routine</h2><p id="modalDescription">Give your routine a name and choose what it should do.</p><form id="routineForm"><label class="form-label">Routine name<input id="routineName" required maxlength="40" placeholder="e.g. Good morning"></label><label class="form-label">When should it run?<select id="routineTrigger"><option>At a set time</option><option>When motion is detected</option><option>When it gets dark</option><option>When I leave home</option></select></label><label class="form-label">Action<select id="routineAction"><option>Turn on living room light</option><option>Turn off all lights</option><option>Switch off non-essential devices</option><option>Turn on bedroom fan</option></select></label><div class="modal-actions"><button type="button" class="secondary-button" id="modalCancel">Cancel</button><button type="submit" class="primary-button">Save routine</button></div></form></div></div>
+<script src="app.js"></script>
+</body>
+</html>
